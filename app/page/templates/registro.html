@@ -1,0 +1,35 @@
+{% extends 'heredac.html' %}
+
+{% block contenido %}
+
+{% if user.is_authenticated %}
+
+	<form method = "POST">
+		{% csrf_token %}		
+<section id="contact" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 conForm">
+        <h5>Registro de General</h5>
+        <p>Aca puedes realizar los registros cliente/habitacion</p>
+        <div id="message"></div>
+          <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Cliente: {{ form.ccliente }}</td>          
+          <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12">habitacion: {{ form.hhabitacion }}</td>
+          
+          <br>
+
+          <button type="submit" value="Submit" class="submitBnt">Agregar registro</button>
+          
+          <br>
+          <br>
+
+          <td><a href="{% url 'page:listaRegistro' %}" class="btn btn-success">Lista de registros</a></td>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+	</form>
+	{% endif %}
+	
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'heredac.html' %}
+
+{% block contenido%}
+{% if user.is_authenticated %}
+<h3>Registro de clientes</h3>
+
+<table class="table table-striped table-hover">
+	<tr>
+		<td>Nombre</td>
+		<td>DPI</td>
+		<td>Editar cliente</td>
+		<td>Eliminar cliente</td>
+	</tr>
+
+	{% for est in object_list %}
+	<tr>
+		<td>{{ est.nombre }}</td>
+		<td>{{ est.dpi }}</td>
+		<td>
+			<a href="{% url 'page:EditarCliente' est.id %}">Editar</a>
+		</td>
+		<td><a href="{% url 'page:EliminarCliente' est.id %}">Eliminar</a></td>
+	</tr>
+	
+	{% endfor %}
+{% endif %}
+</table>
+{% endblock %}

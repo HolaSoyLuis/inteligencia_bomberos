@@ -1,0 +1,24 @@
+{% extends 'heredac.html' %}
+
+{% block contenido %}
+<form method = "POST">
+	{% csrf_token %}
+	<center>
+		<div class="row">
+			<div class="form-group">
+				<label>Usuario</label>
+				{{ form.username }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label>Contrasena</label>
+				{{ form.password }}
+			</div>
+		</div>
+		<button type="submit" value="Submit" class="btn btn-success">Acceder</button>
+	</center>
+</form>
+<br>
+<br>
+{% endblock %}
