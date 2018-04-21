@@ -1,17 +1,32 @@
 from django import forms
-from .models import habitacion,cliente,registro
+from .models import bombero
 
-class habitacionForm(forms.ModelForm):
+class bomberoForm(forms.ModelForm):
 	class Meta:
-		model = habitacion
+		model = bombero
 		fields = '__all__'
 
-class clienteForm(forms.ModelForm):
-	class Meta:
-		model = cliente
-		fields = '__all__'
+class bombero_form(forms.ModelForm):
+    class Meta:
+        model = bombero
+        fields = (
+            'cui',
+            'nombre',
+            'edad',
+            'direccion',
+            'telefono',
+            'foto',
+            'cargo',
+            'activo',
+        )
 
-class registroForm(forms.ModelForm):
-	class Meta:
-		model = registro
-		fields = '__all__'
+        labels = {
+            'cui': 'Cui',
+            'nombre': 'Nombre',
+            'edad': 'Edad',
+            'direccion': 'Direccion',
+            'telefono': 'Telefono',
+            'foto': 'Foto',
+            'cargo': 'Cargo',
+            'activo': 'Esta activo',
+        }

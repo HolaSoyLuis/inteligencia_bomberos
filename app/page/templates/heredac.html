@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Centro recreativo wuq laq</title>
+<title>Bomberos San Pedro Sacatepequez</title>
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -31,51 +31,47 @@
 
 <body>
 <!-- header section -->
+
+
 <section class="banner" role="banner">
   <header id="header">
     <div class="header-content clearfix">
     {% if user.is_authenticated == True %}
-     <a class="logo" class="btn btn-default">Active User: {{ user.username }}</a>
+     <label class="logo" class="btn btn-default">Active User: {{ user.username }}</label>
       {% endif %}
       <nav class="navigation" role="navigation">
         <ul class="primary-nav">
-
-          <td><a href="{% url 'page:principal' %}" class="btn btn-default">Pagina principal</a></td>
+          <li><a href="{% url 'principal' %}">Pagina principal</a></li>
           
           {% if user.is_superuser %}
-          <td><a href="{% url 'page:CrearUsuario' %}" class="btn btn-success">Crear usuario</a></td>
+          <li><a href="{% url 'CrearUsuario' %}">Crear usuario</a></li>
           {% endif %}
 
-          <td>
-          <a href="{% url 'page:listaHabitacionDisponible' %}" class="btn btn-success">Habitaciones disponibles</a>
-
-          {% if user.is_authenticated == True %}
-          <td><a href="{% url 'page:habitacion' %}" class="btn btn-success">Habitacion</a></td>
-          <td><a href="{% url 'page:cliente' %}" class="btn btn-info">Cliente</a></td>
-          <td><a href="{% url 'page:registro' %}" class="btn btn-default">Registros</a></td>
-          {% endif %}
+          <li><a href="{% url 'bombero' %}">Registrar personal</a></li> 
+          <li><a href="{% url 'listaBombero' %}">Listar personal</a></li> 
 
           {% if user.is_authenticated == False %}
-            <td><a href="{% url 'page:login' %}" class="btn btn-default">login</a></td>   
+            <li><a href="{% url 'login' %}">login</a></li>   
           {% endif %}
-
 
           {% if user.is_authenticated == True %}
-            <td><a href="{% url 'page:logout' %}" class="btn btn-default">logout</a></td>   
+            <li><a href="{% url 'logout' %}">logout</a></li>   
           {% endif %}
-
-
         </ul>
       </nav>
       <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>
+
+
+
   </header>
   <!-- banner text -->
   <div class="container">
     <div class="col-md-10 col-md-offset-1">
       <div class="banner-text text-center">
-        <h1>Turicentro Wuq Laq</h1>
-        <p>Te ofrece sus servicios</p>
-        <a href="#" class="btn btn-large">Registrate YA!!!</a> </div>
+        <h1>Bomberos Voluntarios</h1>
+        <p>San Pedro Sacatepequez San Marcos</p>
+        <a href="#" class="btn btn-large">Al servicio de la poblacion</a> </div>
       <!-- banner text --> 
     </div>
   </div>
@@ -85,8 +81,8 @@
 <section id="intro" class="section intro">
   <div class="container">
     <div class="col-md-8 col-md-offset-2 text-center">
-      <h3>Te damos la bienvenida</h3>
-      <p>Selecciona en la parte superior la actividad que desees visualizar, si eres cliente pudes verificar que habitaciones estan disponibles, si eres usuario(employ) logueate para realizar las actividades necesarias</p>
+      <h3>Te damos la bienvenida a nuestra pagina</h3>
+      <p>Historia de la institucion</p>
     </div>
   </div>
 </section>
@@ -95,7 +91,7 @@
   
 </footer>
 <!-- Footer section --> 
-<!-- JS FILES --> 
+<!-- JS FILES  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.flexslider-min.js"></script> 
@@ -104,5 +100,14 @@
 <script src="js/modernizr.js"></script> 
 <script src="js/main.js"></script> 
 <script type="text/javascript" src="js/jquery.contact.js"></script>
+-->
+
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/retina.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>

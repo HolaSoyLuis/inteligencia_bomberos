@@ -1,0 +1,21 @@
+{% extends 'heredac.html' %}
+
+{% block contenido %}
+	<form method = "POST">
+		{% csrf_token %}		
+<section id="contact" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 conForm">
+        <h5>Registro de Bomberos</h5>
+        <p>Aca puedes registrar el personal de Bomberos (si entras y ves la lista notaras que puedes editarlas y eliminarlas si asi es necesario)*</p>
+        <div id="message"></div>
+          {{ form.as_table }}
+          <button type="submit" value="Submit" class="submitBnt">Agregar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+	</form>
+{% endblock %}

@@ -7,12 +7,11 @@ from django.views.generic import FormView
 #estas tres lineas
 
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render
 
 from django.views.generic import TemplateView,CreateView,ListView,UpdateView,DeleteView
-from .models import habitacion,cliente,registro
-from .forms import habitacionForm,clienteForm,registroForm
+from .models import bombero
+from .forms import bomberoForm, bombero_form
 
 # Create your views here.
 
@@ -20,120 +19,45 @@ from .forms import habitacionForm,clienteForm,registroForm
 class vistaPrincipal(TemplateView):
 	template_name = 'principal.html'
 
-
-
-
 #habitacion
 class vistaHabitacion(CreateView):
-	template_name = 'habitacion.html'
-	form_class =  habitacionForm
-	success_url = reverse_lazy('page:principal')
+	template_name = 'bomberox.html'
+	form_class =  bombero_form
+	success_url = 'principal'
 
 class listaHabitacion(ListView):
-	template_name = 'listaHabitacion.html'
-	model = habitacion
+	template_name = 'listaBombero.html'
+	model = bombero
 
 	def get_queryset(self):
-		return habitacion.objects.all()
+		return bombero.objects.all()
 
 class EditarHabitacion(UpdateView):
-	template_name = 'habitacion.html'
-	model = habitacion
-	form_class = habitacionForm
-	success_url = reverse_lazy('page:listaHabitacion')
+	template_name = 'bombero.html'
+	model = bombero
+	form_class = bomberoForm
+	success_url = 'listaBombero'
 
 class EliminarHabitacionView(DeleteView):
 	template_name = 'eliminar.html'
-	model = habitacion
-	success_url = reverse_lazy('page:principal')
-
-class listaHabitacionDisponible(ListView):
-	template_name = 'listaHabitacionDisponible.html'
-	model = habitacion
-
-	def get_queryset(self):
-		return habitacion.objects.all()
+	model = bombero
+	success_url = 'principal'
 #end habitacion
-
-
-
-
-#cliente
-class vistaCliente(CreateView):
-	template_name = 'cliente.html'
-	form_class =  clienteForm
-	success_url = reverse_lazy('page:principal')
-
-class listaCliente(ListView):
-	template_name = 'listaCliente.html'
-	model = cliente
-
-	def get_queryset(self):
-		return cliente.objects.all()
-
-class EditarCliente(UpdateView):
-	template_name = 'cliente.html'
-	model = cliente
-	form_class = clienteForm
-	success_url = reverse_lazy('page:listaCliente')
-
-class EliminarClienteView(DeleteView):
-	template_name = 'eliminar.html'
-	model = cliente
-	success_url = reverse_lazy('page:principal')
-#end cliente
-
-
-
-
-
 
 #crear usuarios
 class CrearUsuarioView(CreateView):
 	model = User
 	template_name = 'CrearUsuario.html'
 	form_class = UserCreationForm
-	success_url = reverse_lazy('page:principal')
+	success_url = 'principal'
 
 #login
 class LoginView(FormView):
 	template_name = 'login.html'
 	form_class = AuthenticationForm
-	success_url = reverse_lazy('page:principal')
+	success_url = 'principal'
 
 	def form_valid(self, form):
 		login(self.request, form.get_user())
 		return super(LoginView, self).form_valid(form)
 #end login
-
-
-
-
-
-
-
-
-
-
-
-#registro
-class vistaRegistro(CreateView):
-	template_name = 'registro.html'
-	form_class =  registroForm
-	success_url = reverse_lazy('page:principal')
-
-class listaRegistro(ListView):
-	template_name = 'listaRegistro.html'
-	model = registro
-
-	def get_queryset(self):
-		return registro.objects.all()
-'''
-	def ocupar_habitacion():
-		value = registro.objects.count()
-		value2 = registro.objects.get(value)
-		habitacion.objects.filter(id = value2.id).update(ocupado = True)
-'''
-
-
-

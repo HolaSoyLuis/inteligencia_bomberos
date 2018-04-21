@@ -1,0 +1,48 @@
+{% extends 'heredac.html' %}
+
+{% block contenido%}
+<h3>Listado de Bomberos</h3>
+
+<table class="table table-striped table-hover">
+	<tr>
+		<td>Cui</td>
+		<td>Nombre</td>
+		<td>Edad</td>
+		<td>Direccion</td>
+		<td>Telefono</td>
+		<td>Cargo</td>
+		<td>Activo</td>
+		<td>Registrado en</td>
+	</tr>
+
+	{% for est in object_list %}
+	<tr>
+		<td>{{ est.cui }}</td>
+		<td>{{ est.nombre }}</td>
+		<td>{{ est.edad }}</td>
+		<td>{{ est.direccion }}</td>
+		<td>{{ est.telefono }}</td>
+		<td>{{ est.cargo }}</td>
+		
+
+		{% if est.esta_activo == False %}
+			<td>NO</td>
+		{% elif est.esta_activo == True %}	
+			<td>SI</td>
+		{% endif %}
+
+
+		<td>{{ est.registrado }}</td>
+		<td>
+			<a href="{% url 'EditarBombero' est.id %}">Editar</a>
+		</td>
+		<td><a href="{% url 'EliminarBombero' est.id %}">Eliminar</a></td>
+	</tr>
+
+	{% endfor %}
+
+	<tr>
+		<td><a href="{% url 'bombero' %}">Agregar nuevo registro</a></td>
+	</tr>
+</table>
+{% endblock %}
